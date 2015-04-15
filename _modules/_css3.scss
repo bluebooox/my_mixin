@@ -1,0 +1,234 @@
+$set_prefix: -moz-, -webkit-, -o-, -ms-, "";
+
+// Border Radius
+@mixin rounded($radius: 10px) {
+    @each $prefix in $set_prefix {
+        #{$prefix}border-radius: $radius;
+    }
+}
+
+// Single Corner Border Radius
+@mixin roundedSides($bgcolor, $topLeft: 10px, $topRight: 10px, $bottomRight: 10px, $bottomLeft: 10px) {
+    @if $bgcolor {
+        background: $bgcolor;
+    }
+    @each $prefix in $set_prefix {
+        @if $topLeft {
+            #{$prefix}border-top-left-radius: $topLeft;
+        }
+        @if $topRight {
+            #{$prefix}border-top-right-radius: $topRight;
+        }
+        @if $bottomRight {
+            #{$prefix}border-bottom-right-radius: $bottomRight;
+        }
+        @if $bottomLeft {
+            #{$prefix}border-bottom-left-radius: $bottomLeft;
+        }
+    }
+}
+
+@mixin text-shadow($shadow) {
+    @each $prefix in $set_prefix {
+        #{$prefix}text-shadow: $shadow;
+    }
+}
+
+@mixin double-text-shadow($shadow-1, $shadow-2) {
+    @each $prefix in $set_prefix {
+        #{$prefix}text-shadow: $shadow-1, $shadow-2;
+    }
+}
+
+// Drop shadows
+@mixin box-shadow($shadow) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $shadow;
+    }
+}
+
+// Drop shadows Custum
+@mixin box-shadows($hor, $vert, $blur, $color) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $hor $vert $blur $color;
+    }
+}
+
+@mixin box-shadowss($hor, $vert, $blur, $var, $color) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $hor $vert $blur $var $color;
+    }
+}
+
+@mixin box-shadowsis($hor, $vert, $blur, $var, $color) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $hor $vert $blur $var $color inset;
+    }
+}
+
+@mixin double-box-shadow($shadow-1, $shadow-2) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-shadow: $shadow-1, $shadow-2;
+    }
+}
+
+// Background clipping
+@mixin background-clip($clip) {
+    @each $prefix in $set_prefix {
+        #{$prefix}background-clip: $clip;
+    }
+}
+
+// Background sizing
+@mixin background-size($size) {
+    @each $prefix in $set_prefix {
+        #{$prefix}background-size: $size;
+    }
+}
+
+// Box sizing border-box
+@mixin box-sizing($boxs: border-box) {
+    @each $prefix in $set_prefix {
+        #{$prefix}box-sizing: $boxs;
+    }
+}
+
+@mixin trasition($property, $duration: 0.3s, $function: ease-out) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transition: $property $durations $function;
+    }
+}
+
+@mixin transition-delay($transition-delay) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transition-delay: $transition-delay;
+    }
+}
+
+@mixin transition-duration($transition-duration) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transition-duration: $transition-duration;
+    }
+}
+
+@mixin transform($scale, $rotate, $trans-x, $trans-y, $x-3d, $y-3d, $z-3d) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: scale($scale) rotate($rotate) translate($trans-x, $trans-y) translate3d($x-3d, $y-3d, $z-3d);
+    }
+}
+
+// Transformations
+@mixin rotate($degrees) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: rotate($degrees);
+    }
+}
+
+@mixin scale($ratio) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: scale($ratio);
+    }
+}
+
+@mixin translate($x, $y) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: translate($x, $y);
+    }
+}
+
+@mixin skew($x, $y) {
+    -webkit-transform: skew($x, $y);
+    -moz-transform: skew($x, $y);
+    -ms-transform: skewX($x) skewY($y);
+    -o-transform: skew($x, $y);
+    transform: skew($x, $y);
+    -webkit-backface-visibility: hidden;
+}
+
+@mixin translate3d($x, $y, $z) {
+    @each $prefix in $set_prefix {
+        #{$prefix}transform: translate3d($x, $y, $z);
+    }
+}
+
+@mixin gradient($baseColor, $toColor) {
+    background-color: $baseColor;
+    background-image: -moz-linear-gradient(top, $baseColor, $toColor);
+    /* FF3.6 */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, $baseColor), color-stop(1, $toColor));
+    /* Saf4+, Chrome */
+    background-image: linear-gradient(top, $baseColor, $toColor);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor');
+    /* IE6IE9 */
+}
+
+// User select
+// For selecting text on the page
+@mixin user-select($select) {
+    @each $prefix in $set_prefix {
+        #{$prefix}user-select: $select;
+    }
+}
+
+// Resize anything
+@mixin resizable($direction) {
+    resize: $direction;
+    // Options: horizontal, vertical, both
+    overflow: auto;
+    // Safari fix
+}
+
+// CSS3 Content Columns
+@mixin content-columns($columnCount, $columnGap: $gridGutterWidth) {
+    @each $prefix in $set_prefix {
+        #{$prefix}column-count: $columnCount;
+    }
+    @each $prefix in $set_prefix {
+        #{$prefix}column-gap: $columnGap;
+    }
+}
+
+// Optional hyphenation
+@mixin hyphens($mode: auto) {
+    word-wrap: break-word;
+    @each $prefix in $set_prefix {
+        #{$prefix}hyphens: $mode;
+    }
+}
+
+// rem
+// body {
+//   @include remfontsize(12);
+//}
+//
+@mixin remfontsize($size: 24, $base: 16) {
+    font-size: $size + px;
+    font-size: $size / $base * 1rem;
+}
+
+//
+// .logo {
+//     @include imgRetina(logo, png, 100px, 40px);
+//}
+//
+@mixin imgRetina($image, $extension, $width, $height) {
+    background: url($image + "." + $extension) no-repeat;
+    width: $width;
+    height: $height;
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+        background-image: url($image + "-2x" + "." + $extension) no-repeat;
+        background-size: $width $height;
+    }
+}
+
+//--------------------------------------------------
+// opacity
+//--------------------------------------------------
+@mixin opacity($opacity) {
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+  -ms-filter: "alpha(opacity=#{$opacity})";
+  -moz-opacity: $opacity / 100;
+  -khtml-opacity: $opacity / 100;
+  zoom: 1;
+}
