@@ -1,0 +1,20 @@
+@charset "utf-8";
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//
+//  function.scss
+//
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+//
+// @param { Number } $size change size
+// @param { Number } $num base font size
+// @param { Number } $opt cut number of decimal places
+//
+@function font_size_calc ($size, $num, $opt: 1) {
+    $n: 1;
+    @for $i from 1 through $opt {
+        $n: $n * 10;
+    }
+    @return round(percentage($size / $num) * $n) / $n;
+}
